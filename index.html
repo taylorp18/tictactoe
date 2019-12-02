@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>Index.html</title>
+	
+<style>
+	/* Create three equal columns that floats next to each other */
+	.column {
+		float: left;
+		width: 20%;
+		height: 90%;
+		padding: 0.0% 0.3%;
+	}
+	/* Clear floats after the columns */
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.row{
+		margin: auto;
+		width: 70%;
+		height: 70%;
+		box-sizing: border-box;
+	}
+	img{
+		/* display: block;
+		margin-left: auto;
+		margin-right: auto; */
+		height: 100%;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	.board{
+		/* width: 80%; */
+		margin: auto;
+		box-sizing: border-box;
+	}
+	</style>
+</head>
+
+<body>
+	<script>
+
+	</script>
+
+
+	<div class="board">
+		<div class="row">
+			<div class="column">
+				<img id="1" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="2" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="3" src="media/blank.jpg" alt="blank">
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<img id="4" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="5" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="6" src="media/blank.jpg" alt="blank">
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<img id="7" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="8" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img id="9" src="media/blank.jpg" alt="blank">
+			</div>
+		</div>
+	</div>
+
+	<script language="javascript">
+		$("#1").click(function(){
+			$("#1").attr("src", "media/x.jpg");
+		});
+		$("#2").click(function(){
+			$("#2").attr("src", "media/x.jpg");
+		});
+		$("#3").click(function(){
+			$("#3").attr("src", "media/x.jpg");
+		});
+		$("#4").click(function(){
+			$("#4").attr("src", "media/x.jpg");
+		});
+		$("#5").click(function(){
+			$("#5").attr("src", "media/x.jpg");
+		});
+		$("#6").click(function(){
+			$("#6").attr("src", "media/x.jpg");
+		});
+		$("#7").click(function(){
+			$("#7").attr("src", "media/x.jpg");
+		});
+		$("#8").click(function(){
+			$("#8").attr("src", "media/x.jpg");
+		});
+		$("#9").click(function(){
+			$("#9").attr("src", "media/x.jpg");
+		});
+	</script>
+</body>
+</html>
