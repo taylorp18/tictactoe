@@ -103,6 +103,7 @@
 		width: 60%;
 		margin: auto;
 		box-sizing: border-box;
+		position: relative;
 	}
 	h2{
 		font-family: 'Courier New', Courier, monospace;
@@ -121,9 +122,9 @@
 	}
 
 	.banner{
-		position: fixed;
-		top: 50%;
-		left: 25%;
+		position: absolute;
+		top: 30%;
+		right: 25%;
 		background-color: white;
 		justify-content: center;
 		margin: auto;
@@ -246,8 +247,7 @@
 			<img align="center" id="bot_avatar" src="https://robohash.org/bot.png/set_set1/?size=100x100">
 			<h2>Computer Opponent</h2>
 		</div>
-	</div>
-
+		
 		<div class="banner" id="win"> 
 		<h1>you won :D</h1>
 		<p>You have been added to the <a href="">hall of fame!</a></p>
@@ -263,6 +263,8 @@
 		<h1>you tied :/</h1>
 		<button onclick="refresh()"> Play Again? </button>
 	</div>
+	</div>
+
 	
 </body>
 </html>
