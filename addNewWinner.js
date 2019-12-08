@@ -7,7 +7,7 @@ function addWinner() {
     request.credentials = "include";
     console.log("1 - request object created");
 
-    let user = document.getElementById("").value;
+    let user = document.getElementById("username").value;
     let d = new Date();
     let ms = d.getTime();
 
