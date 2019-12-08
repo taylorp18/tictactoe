@@ -59,6 +59,18 @@
 
 	
 <style>
+	#choices {
+		height: 100px;
+		width: 100px;
+	}
+	#bot_avatar {
+		height: 100px;
+		width: 100px;
+	}
+	#user_avatar {
+		height: 100px;
+		width: 100px;
+	}
 	/* Create three equal columns that floats next to each other */
 	.column {
 		float: left;
@@ -133,8 +145,68 @@
 
 <body>
 	<h1>TIC TAC TOE</h1>
+		<form id="avatarPick">
+		Enter a new or existing username:
+		<input type="text" id="username">
+		<button type="button" onclick="GenAvatars()">Enter</button>
+		<!--Check database for username, if name is already in database ask if they want to use that name
+			or choose a different name -->
+		<!--Once username is submitted generate avatar from set 2,4,5 with the inputed username.
+			Display the 3 options in 100x100. Have the user click on which avatar they want to use.-->
+		<!--Generate bot avatar from set 1 with the inputed username-->
+</form>
+<script language="javascript">	
+	function GenAvatars(){
+			var name = document.getElementById("username").value;
+			document.getElementById("greet").innerHTML = "Hi, "+name+"! Click which avatar you would like to use."
+			document.getElementById("option1").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100"
+			document.getElementById("option2").src = "https://robohash.org/"+name+".png/set_set4/?size=100x100"
+			document.getElementById("option3").src = "https://robohash.org/"+name+".png/set_set5/?size=100x100"
+			document.getElementById("user_avatar").src = "https://robohash.org/"+name+".png/set_set5/?size=100x100";
+			document.getElementById("bot_avatar").src = "https://robohash.org/"+name+".png/set_set1/?size=100x100"
+			$("#choices").fadeIn(250);
+			$("#avatarPick").hide();
+		}
+	$(document).ready(function(){
+		$("#choices").hide();
+		$(".board").hide();
+		$("#user_avatar").hide();
+		$("#bot_avatar").hide();
+		$("#option1").click(function(){
+			var name = document.getElementById("username").value;
+			document.getElementById("user_avatar").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100";
+			$("#choices").hide();
+			$("#user_avatar").fadeIn(250);
+			$("#bot_avatar").fadeIn(250);
+			$(".board").fadeIn(250);
+		});
+		$("#option2").click(function(){
+			var name = document.getElementById("username").value;
+			document.getElementById("user_avatar").src = "https://robohash.org/"+name+".png/set_set4/?size=100x100";
+			$("#choices").hide();
+			$("#user_avatar").fadeIn(250);
+			$("#bot_avatar").fadeIn(250);
+			$(".board").fadeIn(250);
+		});
+		$("#option3").click(function(){
+			var name = document.getElementById("username").value;
+			document.getElementById("user_avatar").src = "https://robohash.org/"+name+".png/set_set5/?size=100x100";
+			$("#choices").hide();
+			$("#user_avatar").fadeIn(250);
+			$("#bot_avatar").fadeIn(250);
+			$(".board").fadeIn(250);
+		});
+	});
+</script>
+<div align="center" id="choices">
+	<p1 id="greet"></p1><br>
+	<img id="option1" src="https://robohash.org/user.png/set_set2/?size=100x100">
+	<img id="option2" src="https://robohash.org/user.png/set_set4/?size=100x100">
+	<img id="option3" src="https://robohash.org/user.png/set_set5/?size=100x100">
+</div>
 	<div class="board">
 		<div class="avatartop">
+			<img id="user_avatar" src="https://robohash.org/user.png/set_set5/?size=100x100">
 				<h2>Computer Opponent</h2>
 		</div>
 		<div class="row">
@@ -171,6 +243,7 @@
 			</div>
 		</div>
 		<div class="avatarbottom">
+			<img align="center" id="bot_avatar" src="https://robohash.org/bot.png/set_set1/?size=100x100">
 			<h2>Computer Opponent</h2>
 		</div>
 	</div>
