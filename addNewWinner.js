@@ -1,5 +1,5 @@
 
-function getWinners() {
+function addWinner() {
 /* Step 1: Make instance of request object...
 ...to make HTTP request after page is loaded*/
 
