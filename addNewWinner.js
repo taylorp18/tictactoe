@@ -3,8 +3,6 @@ function getWinners() {
 /* Step 1: Make instance of request object...
 ...to make HTTP request after page is loaded*/
 
-    initCookies();
-
     request = new XMLHttpRequest();
     request.credentials = "include";
     console.log("1 - request object created");
@@ -12,7 +10,6 @@ function getWinners() {
     let user = document.getElementById("").value;
     let d = new Date();
     let ms = d.getTime();
-    setCookie("user", user, 10);
 
     // Step 2: Set the URL for the AJAX request to be Heroku app
 
