@@ -4,6 +4,59 @@
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>Index.html</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="tictactoe.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			var BLANK = '$'
+			var X = 'X'
+			var O = 'O'
+			var board = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK]
+			var turn = 1;
+			var game_on = true;
+
+			$('.column').click(function(){
+				if (game_on == true && turn < 10){
+					if (turn%2 == 1 && $(this).find('img').attr('src') == 'media/blank.jpg'){
+						$(this).find('img').attr('src', 'media/x.jpg');
+						board[$(this).find('img').attr('id')-1] = X;
+						turn++;
+						game_on = gameOver(board);
+
+						if (game_on == true && turn < 10){
+
+							id = doTurn(board);
+							board[id] = O;
+							id++;
+							id = '#' + id;
+							$(id).attr('src', 'media/o.jpg')
+							turn++;
+							game_on = gameOver(board);
+						}
+					}
+				}
+			
+				if (game_on != true){
+					if (game_on == X){
+						$('#win').css('display', 'block');
+						/*   ADD TO DATABASE   */
+					}
+					else if(game_on == O){
+						$('#lose').css('display', 'block');
+					}
+				}
+
+				else if (game_on == true && turn > 9){
+					$('#tie').css('display', 'block');			
+				}
+			})
+		})
+
+	</script>
+
 	
 <style>
 	/* Create three equal columns that floats next to each other */
@@ -56,6 +109,23 @@
 		text-align: right;
 		padding-right: 45%;
 	}
+
+	.banner{
+		justify-content: center;
+		margin: auto;
+		width: 50%;
+		border: 2px solid black;
+		display: none;
+	}
+
+	p, h1{
+		text-align: center;
+	}
+
+	button{
+		display: block;
+		margin: auto;
+	}
 	</style>
 </head>
 
@@ -102,36 +172,22 @@
 			<h2>Computer Opponent</h2>
 		</div>
 	</div>
-	
 
-	<script language="javascript">
-		$("#1").click(function(){
-			$("#1").attr("src", "media/x.jpg");
-		});
-		$("#2").click(function(){
-			$("#2").attr("src", "media/x.jpg");
-		});
-		$("#3").click(function(){
-			$("#3").attr("src", "media/x.jpg");
-		});
-		$("#4").click(function(){
-			$("#4").attr("src", "media/x.jpg");
-		});
-		$("#5").click(function(){
-			$("#5").attr("src", "media/x.jpg");
-		});
-		$("#6").click(function(){
-			$("#6").attr("src", "media/x.jpg");
-		});
-		$("#7").click(function(){
-			$("#7").attr("src", "media/x.jpg");
-		});
-		$("#8").click(function(){
-			$("#8").attr("src", "media/x.jpg");
-		});
-		$("#9").click(function(){
-			$("#9").attr("src", "media/x.jpg");
-		});
-	</script>
+		<div class="banner" id="win"> 
+		<h1>you won :D</h1>
+		<p>You have been added to the <a href="">hall of fame!</a></p>
+		<button onclick="refresh()"> Play Again! </button>
+	</div>
+
+	<div class="banner" id="lose"> 
+		<h1>you lost :(</h1>
+		<button onclick="refresh()"> Play Again? </button>
+	</div>
+
+	<div class="banner" id="tie">
+		<h1>you tied :/</h1>
+		<button onclick="refresh()"> Play Again? </button>
+	</div>
+	
 </body>
 </html>
