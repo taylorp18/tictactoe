@@ -158,6 +158,7 @@
 <script language="javascript">	
 	function GenAvatars(){
 			var name = document.getElementById("username").value;
+			document.getElementById("User_place").innerHTML = name;
 			document.getElementById("greet").innerHTML = "Hi, "+name+"! Click which avatar you would like to use."
 			document.getElementById("option1").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100"
 			document.getElementById("option2").src = "https://robohash.org/"+name+".png/set_set4/?size=100x100"
@@ -199,7 +200,7 @@
 	});
 </script>
 <div align="center" id="choices">
-	<p1 id="greet"></p1><br>
+	<p1 id="greet"></p1>
 	<img id="option1" src="https://robohash.org/user.png/set_set2/?size=100x100">
 	<img id="option2" src="https://robohash.org/user.png/set_set4/?size=100x100">
 	<img id="option3" src="https://robohash.org/user.png/set_set5/?size=100x100">
@@ -207,7 +208,7 @@
 	<div class="board">
 		<div class="avatartop">
 			<img id="user_avatar" src="https://robohash.org/user.png/set_set5/?size=100x100">
-				<h2>Computer Opponent</h2>
+				<h2 id ="User_place"></h2>
 		</div>
 		<div class="row">
 			<div class="column">
