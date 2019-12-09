@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+		<link rel="stylesheet" type="text/css" href="tictac.css">
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -9,6 +10,56 @@
 	<script type="text/javascript" src="tictactoe.js"></script>
 
 	<script type="text/javascript">
+				      
+		function addWinner() {
+			/* Step 1: Make instance of request object...
+			...to make HTTP request after page is loaded*/
+
+    			request = new XMLHttpRequest();
+    			request.credentials = "include";
+    			console.log("1 - request object created");
+
+		    let user = document.getElementById("username").value;
+		    let d = new Date();
+		    let ms = d.getTime();
+
+		    // Step 2: Set the URL for the AJAX request to be Heroku app
+
+		    request.open("POST", "https://desolate-brook-01524.herokuapp.com/?user=" + user +
+			"&date=" + d.toString() + "&time=" + ms.toString(), true);
+
+		    console.log("2 - opened request file");
+
+		    // Step 3: set up event handler/callback
+
+		    request.onreadystatechange = function() {
+			console.log("3 - readystatechange event fired.");
+
+			if (request.readyState == 4 && request.status == 200) {
+
+			    console.log("5 - done");
+			    result = request.responseText;
+
+
+
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+
+			    //document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+			}
+
+			else if (request.readyState == 3) {
+
+			    //document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+			}
+
+		    }
+		    // Step 4: fire off the HTTP request
+		    request.send();
+		    console.log("4 - Request sent");
+		}
 
 		$(document).ready(function(){
 			var BLANK = '$'
@@ -42,7 +93,8 @@
 				if (game_on != true){
 					if (game_on == X){
 						$('#win').css('display', 'block');
-						/*   ADD TO DATABASE   */
+						addWinner();
+				      		alert(1);
 					}
 					else if(game_on == O){
 						$('#lose').css('display', 'block');
@@ -57,99 +109,19 @@
 
 	</script>
 
-	
-<style>
-	#choices {
-		height: 100px;
-		width: 100px;
-	}
-	#bot_avatar {
-		height: 100px;
-		width: 100px;
-	}
-	#user_avatar {
-		height: 100px;
-		width: 100px;
-	}
-	/* Create three equal columns that floats next to each other */
-	.column {
-		float: left;
-		width: 32%;
-		height: 90%;
-		padding: 0.0% 0.3%;
-		box-sizing: border-box;
-	}
-	/* Clear floats after the columns */
-	.row:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-	.row{
-		margin: auto;
-		width: 70%;
-		height: 70%;
-		box-sizing: border-box;
-	}
-	img{
-		/* display: block;
-		margin-left: auto;
-		margin-right: auto; */
-		height: 100%;
-		width: 100%;
-		box-sizing: border-box;
-	}
-	.board{
-		width: 60%;
-		margin: auto;
-		box-sizing: border-box;
-		position: relative;
-	}
-	h2{
-		font-family: 'Courier New', Courier, monospace;
-		font-size: small;
-	}
-	h1{
-		font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		/* font-size: ; */
-		text-align: center;
-	}
-	.avatartop{
-		text-align: left;
-	}
-	.avatarbottom{
-		text-align: right;
-	}
-
-	.banner{
-		position: absolute;
-		top: 30%;
-		right: 25%;
-		background-color: white;
-		justify-content: center;
-		margin: auto;
-		width: 50%;
-		border: 2px solid black;
-		display: none;
-	}
-
-	p, h1{
-		text-align: center;
-	}
-
-	button{
-		display: block;
-		margin: auto;
-	}
-	</style>
 </head>
 
 <body>
 	<h1>TIC TAC TOE</h1>
-		<form id="avatarPick">
-		Enter a new or existing username:
-		<input type="text" id="username">
-		<button type="button" onclick="GenAvatars()">Enter</button>
+	<nav>
+		<ul>
+		 	<li><a href ="index.html">Play</a></li>
+		  	<li><a href ="halloffame.html">HighScores</a></li>
+		</ul>
+	</nav>
+		<form id="avatarPick" align="center">
+		Enter a username to play:<br>
+		<input type="text" id="username"><button type="button" onclick="GenAvatars()">Enter</button>
 		<!--Check database for username, if name is already in database ask if they want to use that name
 			or choose a different name -->
 		<!--Once username is submitted generate avatar from set 2,4,5 with the inputed username.
@@ -159,6 +131,7 @@
 <script language="javascript">	
 	function GenAvatars(){
 			var name = document.getElementById("username").value;
+			document.getElementById("User_place").innerHTML = name;
 			document.getElementById("greet").innerHTML = "Hi, "+name+"! Click which avatar you would like to use."
 			document.getElementById("option1").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100"
 			document.getElementById("option2").src = "https://robohash.org/"+name+".png/set_set4/?size=100x100"
@@ -200,7 +173,7 @@
 	});
 </script>
 <div align="center" id="choices">
-	<p1 id="greet"></p1><br>
+	<p1 id="greet"></p1>
 	<img id="option1" src="https://robohash.org/user.png/set_set2/?size=100x100">
 	<img id="option2" src="https://robohash.org/user.png/set_set4/?size=100x100">
 	<img id="option3" src="https://robohash.org/user.png/set_set5/?size=100x100">
@@ -208,7 +181,7 @@
 	<div class="board">
 		<div class="avatartop">
 			<img id="user_avatar" src="https://robohash.org/user.png/set_set5/?size=100x100">
-				<h2>Computer Opponent</h2>
+				<h2 id ="User_place"></h2>
 		</div>
 		<div class="row">
 			<div class="column">
@@ -250,7 +223,7 @@
 		
 		<div class="banner" id="win"> 
 		<h1>you won :D</h1>
-		<p>You have been added to the <a href="">hall of fame!</a></p>
+		<p>You have been added to the <a href="halloffame.html">hall of fame!</a></p>
 		<button onclick="refresh()"> Play Again! </button>
 	</div>
 
