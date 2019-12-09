@@ -5,40 +5,94 @@ function refresh() {
 
 /* Return the index of the turn */
 function doTurn(board) {
+	console.log('doturn')
 			var BLANK = '$'
 			var X = 'X'
 			var O = 'O'
-		do {
-			var turn =  Math.round(Math.random() * 9 + .5);
-		}
-		while ( board[turn] != BLANK);
 
-		return turn--;
-//		return miniMax(board, 1);
+		if (board[4] == BLANK){
+			return 4;
+		}
+
+		else if (twoInARow(0,1,2, board)){
+			console.log('top row')
+			return empty(0,1,2, board)
+		}
+
+		else if (twoInARow(3,4,5, board)){
+			console.log('middle row')
+			return empty(3,4,5, board)
+		}
+
+		else if (twoInARow(6,7,8, board)){
+			console.log('bottom row')
+			return empty(6,7,8, board)
+		}
+
+		else if (twoInARow(0,3,6, board)){
+			console.log('left column')
+			return empty(0,3,6, board)
+		}
+
+		else if (twoInARow(1,4,7, board)){
+			console.log('middle column')
+			return empty(1,4,7, board)
+		}
+
+		else if (twoInARow(2,5,8, board)){
+			console.log('right column')
+			return empty(2,5,8, board)
+		}
+
+		else if (twoInARow(0,4,8, board)){
+			console.log('right diagonal')
+			return empty(0,4,8, board)
+		}
+
+		else if (twoInARow(2,4,6, board)){
+			console.log('left diagonal')
+			return empty(2,4,6, board)
+		}
+
+		else{
+			console.log('random')
+			do {
+				var turn =  Math.round(Math.random() * 9 + .5);
+			}
+			while ( board[turn] != BLANK);
+
+			return turn--;
+		}
 }
 
-function miniMax(board, player) {
+function twoInARow(a,b,c, board) {
+	console.log(board[a])
 	var BLANK = '$'
 	var X = 'X'
-	var O = 'O'
-	var max = 0;
 
+	if (board[a] == board[b] && board[c] == BLANK && board[a] == X)
+		return true
 
-	var end = gameOver(board);
-	if (end != true){
-		return player;
-	}
+	else if (board[a] == board[c] && board[b] == BLANK && board[a] == X)
+		return true
 
-	else
-		for (var i = 0; i < 9; i++) {
-			if (board[i] == BLANK){
-				var new_board = board;
-				new_board[i] = (player == 1) ? O : X;
+	else if (board[b] == board[c] && board[a] == BLANK && board[b] == X)
+		return true
 
+	else	
+		return false;	
+}
 
-			}
-		}
-	
+function empty(a,b,c, board) {
+	var BLANK = '$'
+	if (board[a] == BLANK)
+		return a;
+
+	if (board[b] == BLANK)
+		return b;
+
+	if (board[c] == BLANK)
+		return c;
 }
 
 function printBoard(board) {
@@ -101,14 +155,4 @@ function gameOver(board) {
 
 			else
 				return true;	
-}
-
-function play() {
-	while (!gameOver()){
-		getTurn();
-
-		if(!gameOver())
-			doTurn();
-
-	}
 }
