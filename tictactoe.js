@@ -14,6 +14,10 @@ function doTurn(board) {
 			return 4;
 		}
 
+		else if (board[4] == X && board[0] == BLANK){
+			return 0;
+		}
+
 		else if (twoInARow(0,1,2,O,board)){
 			console.log('top row')
 			return empty(0,1,2, board)
