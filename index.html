@@ -78,14 +78,16 @@
 						game_on = gameOver(board);
 
 						if (game_on == true && turn < 10){
-
-							id = doTurn(board);
-							board[id] = O;
-							id++;
-							id = '#' + id;
-							$(id).attr('src', 'media/o.jpg')
-							turn++;
-							game_on = gameOver(board);
+							setTimeout(function(){
+								id = doTurn(board);
+								board[id] = O;
+								id++;
+								id = '#' + id;
+								$(id).attr('src', 'media/o.jpg')
+								turn++;
+								game_on = gameOver(board);
+							},500)
+							
 						}
 					}
 				}
