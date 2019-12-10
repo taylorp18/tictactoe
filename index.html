@@ -78,14 +78,15 @@
 						game_on = gameOver(board);
 
 						if (game_on == true && turn < 10){
-							setTimeout(function(){
-								id = doTurn(board);
-								board[id] = O;
-								id++;
-								id = '#' + id;
+							id = doTurn(board);
+							board[id] = O;
+							id++;
+							id = '#' + id;
+							game_on = gameOver(board);						
+
+							setTimeout(function(){								
 								$(id).attr('src', 'media/o.jpg')
-								turn++;
-								game_on = gameOver(board);
+								turn++;		
 							},500)
 							
 						}
@@ -98,7 +99,10 @@
 						addWinner();
 					}
 					else if(game_on == O){
-						$('#lose').css('display', 'block');
+						setTimeout(function(){
+							$('#lose').css('display', 'block');
+						},500)
+						
 					}
 				}
 
