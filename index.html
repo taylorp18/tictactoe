@@ -26,7 +26,7 @@
 		    // Step 2: Set the URL for the AJAX request to be Heroku app
 
 		    request.open("POST", "https://desolate-brook-01524.herokuapp.com/?user=" + user +
-			"&date=" + d.toString() + "&time=" + ms.toString(), true);
+			"&date=" + d.toLocaleDateString() + " " + d.toLocaleTimeString() + "&time=" + ms.toString(), true);
 
 		    console.log("2 - opened request file");
 
