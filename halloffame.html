@@ -10,6 +10,10 @@
         function getWinners() {
             /* Step 1: Make instance of request object...
             ...to make HTTP request after page is loaded*/
+            var users = [];
+            var dates = [];
+            var times = [];
+            
             request = new XMLHttpRequest();
             request.credentials = "include";
             console.log("1 - request object created");
@@ -29,7 +33,20 @@
 
                     console.log("5 - done");
                     result = request.responseText;
-                    document.getElementById("data").innerHTML = result;
+                    let res = result.split("\\");
+                    for (var i = 0; i < res.length - 1; i += 2) {
+                        users.push(res[i]);
+                        dates.push(res[i + 1]);
+                    }
+
+                    document.getElementById("data").innerHTML = "";
+                    
+                    for (var i = 0; i < users.length; i++) {
+                        let d1 = dates[i].split(" ");
+                        dates[i] = d1[0];
+                        times[i] = d1[1] + " " + d1[2];
+                        document.getElementById("data").innerHTML += users[i] + " " + dates[i] + " " + times[i] + "<br>";
+                    }
 
 
                     
@@ -56,7 +73,6 @@
     </script>
     </head>
     <body onload="getWinners()">
-        <header><a href="index.html">Back to Game</a></header>
         <h1>Hall of Fame</h1>
         <nav>
             <ul>
