@@ -1,6 +1,13 @@
 
 function refresh() {
-	location.reload();
+	for (var i=1; i < 10 ; i++){
+		$('#'+i).attr('src', 'media/blank.jpg');
+	}
+
+	$('#win').css('display', 'none');
+	$('#lose').css('display', 'none');
+	$('#tie').css('display', 'none');
+	play();
 }
 
 /* Return the index of the turn */

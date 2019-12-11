@@ -76,9 +76,14 @@ p, h1{
 	text-align: center;
 }
 
-button{
+.banner button{
+	border-radius: 9px;
+	background-color: #F1F1F1;
+	padding: 9px 13px;
 	display: block;
-	margin: auto;
+	margin: 12px auto;
+	font-size: 18px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 nav{
 	text-align: center;

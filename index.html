@@ -62,6 +62,11 @@
 		}
 
 		$(document).ready(function(){
+			play();
+		})
+
+		function play() {
+			console.log('play')
 			var BLANK = '$'
 			var X = 'X'
 			var O = 'O'
@@ -96,21 +101,31 @@
 				if (game_on != true){
 					if (game_on == X){
 						$('#win').css('display', 'block');
+						board = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK]
+						turn = 1;
+						game_on = true;
 						addWinner();
 					}
 					else if(game_on == O){
 						setTimeout(function(){
 							$('#lose').css('display', 'block');
 						},500)
-						
-					}
+						board = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK]
+						turn = 1;
+						game_on = true;					
+					}6
+					return;
 				}
 
 				else if (game_on == true && turn > 9){
-					$('#tie').css('display', 'block');			
+					$('#tie').css('display', 'block');
+					board = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK]
+					turn = 1;
+					game_on = true;
+					return;			
 				}
 			})
-		})
+		}
 
 	</script>
 
