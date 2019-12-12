@@ -23,6 +23,9 @@
 			while (s.indexOf("\\") != -1) {
 				s = s.replace("\\", "");
 			}
+			
+			if (s == "")
+				s = "placeholder";
 			return s;
 		}
 		
