@@ -13,15 +13,15 @@
 				      
 		function sanitize(s) {
 			while (s.indexOf("<") != -1) {
-				s.replace("<", "");
+				s = s.replace("<", "");
 			}
 			
 			while (s.indexOf(">") != -1) {
-				s.replace(">", "");
+				s = s.replace(">", "");
 			}
 			
 			while (s.indexOf("\\") != -1) {
-				s.replace("\\", "");
+				s = s.replace("\\", "");
 			}
 			return s;
 		}
