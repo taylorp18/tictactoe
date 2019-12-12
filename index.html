@@ -12,9 +12,17 @@
 	<script type="text/javascript">
 				      
 		function sanitize(s) {
-			s.replace("<", "");
-			s.replace(">", "");
-			s.replace("\\", " ");
+			while (s.indexOf("<") != -1) {
+				s.replace("<", "");
+			}
+			
+			while (s.indexOf(">") != -1) {
+				s.replace(">", "");
+			}
+			
+			while (s.indexOf("\\") != -1) {
+				s.replace("\\", "");
+			}
 			return s;
 		}
 		
