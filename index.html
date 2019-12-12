@@ -138,7 +138,7 @@
 		  	<li><a href ="halloffame.html">HighScores</a></li>
 		</ul>
 	</nav>
-		<form id="avatarPick" align="center">
+		<form id="avatarPick" align="center" onsubmit="GenAvatars(); return false" >
 		Enter a username to play:<br>
 		<input type="text" id="username"><button type="button" onclick="GenAvatars()">Enter</button>
 		<!--Check database for username, if name is already in database ask if they want to use that name
