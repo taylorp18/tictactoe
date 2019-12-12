@@ -11,6 +11,24 @@
 
 	<script type="text/javascript">
 				      
+		function sanitize(s) {
+			while (s.indexOf("<") != -1) {
+				s = s.replace("<", "");
+			}
+			
+			while (s.indexOf(">") != -1) {
+				s = s.replace(">", "");
+			}
+			
+			while (s.indexOf("\\") != -1) {
+				s = s.replace("\\", "");
+			}
+			
+			if (s == "")
+				s = "placeholder";
+			return s;
+		}
+		
 		function addWinner() {
 			/* Step 1: Make instance of request object...
 			...to make HTTP request after page is loaded*/
@@ -19,7 +37,7 @@
     			request.credentials = "include";
     			console.log("1 - request object created");
 
-		    let user = document.getElementById("username").value;
+		    let user = sanitize(document.getElementById("username").value);
 		    let d = new Date();
 		    let ms = d.getTime();
 
@@ -66,7 +84,6 @@
 		})
 
 		function play() {
-			console.log('play')
 			var BLANK = '$'
 			var X = 'X'
 			var O = 'O'
@@ -150,7 +167,7 @@
 </form>
 <script language="javascript">	
 	function GenAvatars(){
-			var name = document.getElementById("username").value;
+			var name = sanitize(document.getElementById("username").value);
 			document.getElementById("User_place").innerHTML = name;
 			document.getElementById("greet").innerHTML = "Hi, "+name+"! Click which avatar you would like to use."
 			document.getElementById("option1").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100"

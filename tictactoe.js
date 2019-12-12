@@ -12,7 +12,6 @@ function refresh() {
 
 /* Return the index of the turn */
 function doTurn(board) {
-	console.log('doturn')
 			var BLANK = '$'
 			var X = 'X'
 			var O = 'O'
@@ -26,87 +25,70 @@ function doTurn(board) {
 		}
 
 		else if (twoInARow(0,1,2,O,board)){
-			console.log('top row')
 			return empty(0,1,2, board)
 		}
 
 		else if (twoInARow(3,4,5,O,board)){
-			console.log('middle row')
 			return empty(3,4,5, board)
 		}
 
 		else if (twoInARow(6,7,8,O,board)){
-			console.log('bottom row')
 			return empty(6,7,8, board)
 		}
 
 		else if (twoInARow(0,3,6,O,board)){
-			console.log('left column')
 			return empty(0,3,6, board)
 		}
 
 		else if (twoInARow(1,4,7,O,board)){
-			console.log('middle column')
 			return empty(1,4,7, board)
 		}
 
 		else if (twoInARow(2,5,8,O,board)){
-			console.log('right column')
 			return empty(2,5,8, board)
 		}
 
 		else if (twoInARow(0,4,8,O,board)){
-			console.log('right diagonal')
 			return empty(0,4,8, board)
 		}
 
 		else if (twoInARow(2,4,6,O,board)){
-			console.log('left diagonal')
 			return empty(2,4,6, board)
 		}
 
 		else if (twoInARow(0,1,2,X,board)){
-			console.log('top row')
 			return empty(0,1,2, board)
 		}
 
 		else if (twoInARow(3,4,5,X,board)){
-			console.log('middle row')
 			return empty(3,4,5, board)
 		}
 
 		else if (twoInARow(6,7,8,X,board)){
-			console.log('bottom row')
 			return empty(6,7,8, board)
 		}
 
 		else if (twoInARow(0,3,6,X,board)){
-			console.log('left column')
 			return empty(0,3,6, board)
 		}
 
 		else if (twoInARow(1,4,7,X,board)){
-			console.log('middle column')
 			return empty(1,4,7, board)
 		}
 
 		else if (twoInARow(2,5,8,X,board)){
-			console.log('right column')
 			return empty(2,5,8, board)
 		}
 
 		else if (twoInARow(0,4,8,X,board)){
-			console.log('right diagonal')
 			return empty(0,4,8, board)
 		}
 
 		else if (twoInARow(2,4,6,X,board)){
-			console.log('left diagonal')
 			return empty(2,4,6, board)
 		}
 
 		else{
-			console.log('random')
 			do {
 				var turn =  Math.round(Math.random() * 9 + .5);
 			}
@@ -117,7 +99,6 @@ function doTurn(board) {
 }
 
 function twoInARow(a,b,c, player, board) {
-	console.log(board[a])
 	var BLANK = '$'
 
 	if (board[a] == board[b] && board[c] == BLANK && board[a] == player)
@@ -147,7 +128,6 @@ function empty(a,b,c, board) {
 
 function printBoard(board) {
 	for (var i = 0; i < board.length; i++) {
-		console.log(board[i])
 	}
 }
 
