@@ -3,12 +3,16 @@
 	width: 100px;
 }
 #bot_avatar {
-	height: 100px;
-	width: 100px;
+	height: 30%;
+	width: auto;
+	box-sizing: border-box;
+
 }
 #user_avatar {
 	height: 100px;
-	width: 100px;
+	width: auto;
+	box-sizing: border-box;
+
 }
 /* Create three equal columns that floats next to each other */
 .column {
@@ -30,16 +34,14 @@
 	height: 70%;
 	box-sizing: border-box;
 }
-img{
-	/* display: block;
-	margin-left: auto;
-	margin-right: auto; */
+.box{
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
 }
 .board{
 	width: 60%;
+	max-height: 80%;
 	margin: auto;
 	box-sizing: border-box;
 	position: relative;
@@ -116,9 +118,31 @@ nav ul li a:hover{
 	color: #FFFFFF;
 	background: #000000;
 	box-sizing: border-box;
-	/* padding: 5px 10px; */
+	padding: 2px 6px;
 }
 
-body{
-	height: 80%;
+/* got some help here from w3schools: https://www.w3schools.com/Css/css_table.asp */
+#data{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 65%;
+	margin: auto;
+}
+
+#data td, #data th {
+	border: 1px solid #ddd;
+	padding: 5px;
+	text-align: center;
+}
+
+#data tr:nth-child(even){background-color: #f2f2f2;}
+
+#data tr:hover {background-color: #ddd;}
+
+#data th {
+padding-top: 8px;
+padding-bottom: 8px;
+text-align: center;
+background-color: black;
+color: white;
 }
