@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-		<link rel="stylesheet" type="text/css" href="tictac.css">
+<link rel="stylesheet" type="text/css" href="tictac.css">
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -11,6 +11,24 @@
 
 	<script type="text/javascript">
 				      
+		function sanitize(s) {
+			while (s.indexOf("<") != -1) {
+				s = s.replace("<", "");
+			}
+			
+			while (s.indexOf(">") != -1) {
+				s = s.replace(">", "");
+			}
+			
+			while (s.indexOf("\\") != -1) {
+				s = s.replace("\\", "");
+			}
+			
+			if (s == "")
+				s = "placeholder";
+			return s;
+		}
+		
 		function addWinner() {
 			/* Step 1: Make instance of request object...
 			...to make HTTP request after page is loaded*/
@@ -19,7 +37,7 @@
     			request.credentials = "include";
     			console.log("1 - request object created");
 
-		    let user = document.getElementById("username").value;
+		    let user = sanitize(document.getElementById("username").value);
 		    let d = new Date();
 		    let ms = d.getTime();
 
@@ -149,7 +167,7 @@
 </form>
 <script language="javascript">	
 	function GenAvatars(){
-			var name = document.getElementById("username").value;
+			var name = sanitize(document.getElementById("username").value);
 			document.getElementById("User_place").innerHTML = name;
 			document.getElementById("greet").innerHTML = "Hi, "+name+"! Click which avatar you would like to use."
 			document.getElementById("option1").src = "https://robohash.org/"+name+".png/set_set2/?size=100x100"
@@ -204,35 +222,35 @@
 		</div>
 		<div class="row">
 			<div class="column">
-				<img id="1" src="media/blank.jpg" alt="blank">
+				<img class="box" id="1" src="media/blank.jpg" alt="blank">
 			</div>
 			<div class="column">
-				<img id="2" src="media/blank.jpg" alt="blank">
+				<img class="box" id="2" src="media/blank.jpg" alt="blank">
 			</div>
 			<div class="column">
-				<img id="3" src="media/blank.jpg" alt="blank">
-			</div>
-		</div>
-		<div class="row">
-			<div class="column">
-				<img id="4" src="media/blank.jpg" alt="blank">
-			</div>
-			<div class="column">
-				<img id="5" src="media/blank.jpg" alt="blank">
-			</div>
-			<div class="column">
-				<img id="6" src="media/blank.jpg" alt="blank">
+				<img class="box" id="3" src="media/blank.jpg" alt="blank">
 			</div>
 		</div>
 		<div class="row">
 			<div class="column">
-				<img id="7" src="media/blank.jpg" alt="blank">
+				<img class="box" id="4" src="media/blank.jpg" alt="blank">
 			</div>
 			<div class="column">
-				<img id="8" src="media/blank.jpg" alt="blank">
+				<img class="box" id="5" src="media/blank.jpg" alt="blank">
 			</div>
 			<div class="column">
-				<img id="9" src="media/blank.jpg" alt="blank">
+				<img class="box" id="6" src="media/blank.jpg" alt="blank">
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<img class="box" id="7" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img class="box" id="8" src="media/blank.jpg" alt="blank">
+			</div>
+			<div class="column">
+				<img class="box" id="9" src="media/blank.jpg" alt="blank">
 			</div>
 		</div>
 		<div class="avatarbottom">

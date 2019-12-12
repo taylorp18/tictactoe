@@ -45,7 +45,11 @@
                         let d1 = dates[i].split(" ");
                         dates[i] = d1[0];
                         times[i] = d1[1] + " " + d1[2];
-                        document.getElementById("data").innerHTML += users[i] + " " + dates[i] + " " + times[i] + "<br>";
+                        if(i == 0){
+                            document.getElementById("data").innerHTML += "<tr> <th>Username</th> <th>Date</th> <th>Time</th>";
+                        }
+                        document.getElementById("data").innerHTML += "<tr> <td> " + users[i] + "</td> <td>" + dates[i] +
+                                                                     "</td> <td>" + times[i] + "</td></tr>";
                     }
 
 
@@ -80,8 +84,8 @@
                   <li><a href ="halloffame.html">HighScores</a></li>
             </ul>
         </nav>
-        <div id="data">
-        </div>
+        <table id="data">
+        </table>
 
     </body>
 </html>
